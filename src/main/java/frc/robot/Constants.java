@@ -14,13 +14,20 @@ package frc.robot;
  * It is advised to statically import this class (or one of its inner classes)
  * wherever the constants are needed, to reduce verbosity.
  */
+// hopper spark id = 2
+// uptake lift spark id = 6
+// uptake grabber = 11
+// right shooter = 5
+// turret spark id = 8
+// left shooter = 10
+// intake id 4
 public final class Constants {
 
     public final class DriveConstants {
-        public static final int FRONT_LEFT_MOTOR_ID = 0;
-        public static final int FRONT_RIGHT_MOTOR_ID = 0;
-        public static final int BACK_LEFT_MOTOR_ID = 0;
-        public static final int BACK_RIGHT_MOTOR_ID = 0;
+        public static final int FRONT_LEFT_MOTOR_ID = 8;
+        public static final int FRONT_RIGHT_MOTOR_ID = 1;
+        public static final int BACK_LEFT_MOTOR_ID = 9;
+        public static final int BACK_RIGHT_MOTOR_ID = 4;
     }
 
     public final class OIConstants {
