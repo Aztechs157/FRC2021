@@ -27,7 +27,8 @@ public class DriveSubsystem extends SubsystemBase {
 
     /** Creates a new DriveSubsystem. */
     public DriveSubsystem(final Joystick driveController) {
-        setDefaultCommand(new TeleopDrive(this, driveController));
+        // Disable axis drive because testing with commands
+        // setDefaultCommand(new TeleopDrive(this, driveController));
     }
 
     public void tankDrive(final double leftSpeed, final double rightSpeed) {

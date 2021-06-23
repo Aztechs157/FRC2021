@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.drive.DriveSubsystem;
 import static frc.robot.Constants.OIConstants.*;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -30,6 +31,8 @@ public class RobotContainer {
     public RobotContainer() {
         // Configure the button bindings
         configureButtonBindings();
+        new JoystickButton(driveController, 1).whenPressed(() -> driveSubsystem.tankDrive(.1, .1), driveSubsystem);
+        new JoystickButton(driveController, 2).whenPressed(() -> driveSubsystem.tankDrive(0, 0), driveSubsystem);
     }
 
     /**
