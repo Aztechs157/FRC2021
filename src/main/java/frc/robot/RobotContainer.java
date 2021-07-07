@@ -5,12 +5,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.drive.DriveSubsystem;
-import static frc.robot.Constants.OIConstants.*;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.controls.Controller;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -20,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private final Joystick driveController = new Joystick(DRIVE_CONTROLLER_ID);
+    private final Controller driveController = new Controller();
 
     // The robot's subsystems and commands are defined here...
     private final DriveSubsystem driveSubsystem = new DriveSubsystem(driveController);
@@ -31,8 +29,6 @@ public class RobotContainer {
     public RobotContainer() {
         // Configure the button bindings
         configureButtonBindings();
-        new JoystickButton(driveController, 1).whenPressed(() -> driveSubsystem.tankDrive(.1, .1), driveSubsystem);
-        new JoystickButton(driveController, 2).whenPressed(() -> driveSubsystem.tankDrive(0, 0), driveSubsystem);
     }
 
     /**
@@ -42,6 +38,15 @@ public class RobotContainer {
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
+        driveController.driveForward().whenPressed(() -> driveSubsystem.tankDrive(.1, .1), driveSubsystem);
+
+        // new JoystickButton(driveController, 1).whenPressed(() ->
+        // driveSubsystem.tankDrive(.1, .1), driveSubsystem);
+        // new JoystickButton(driveController, 2).whenPressed(() ->
+        // driveSubsystem.tankDrive(0, 0), driveSubsystem);
+        // new JoystickButton(driveController, 3)
+        // .whenPressed(() -> driveSubsystem.arcadeDrive(0 /* Placeholder */, 0/*
+        // Placeholder */), driveSubsystem);
     }
 
     /**

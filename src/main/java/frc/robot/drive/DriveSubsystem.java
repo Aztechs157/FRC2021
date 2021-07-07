@@ -7,12 +7,12 @@ package frc.robot.drive;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import static frc.robot.Constants.DriveConstants.*;
+import frc.robot.controls.Controller;
 
 public class DriveSubsystem extends SubsystemBase {
     private final CANSparkMax frontLeftMotor = new CANSparkMax(FRONT_LEFT_MOTOR_ID, MotorType.kBrushless);
@@ -26,12 +26,16 @@ public class DriveSubsystem extends SubsystemBase {
     private final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
     /** Creates a new DriveSubsystem. */
-    public DriveSubsystem(final Joystick driveController) {
+    public DriveSubsystem(final Controller driveController) {
         // Disable axis drive because testing with commands
         // setDefaultCommand(new TeleopDrive(this, driveController));
     }
 
     public void tankDrive(final double leftSpeed, final double rightSpeed) {
         drive.tankDrive(leftSpeed, rightSpeed);
+    }
+
+    public void arcadeDrive(final double forwardBackSpeed, final double turnSpeed) {
+        drive.arcadeDrive(forwardBackSpeed, turnSpeed);
     }
 }
