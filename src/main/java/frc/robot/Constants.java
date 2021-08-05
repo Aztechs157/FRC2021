@@ -15,28 +15,4 @@ package frc.robot;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
-
-    public final class DriveConstants {
-        public static final int FRONT_LEFT_MOTOR_ID = 1;
-        public static final int FRONT_RIGHT_MOTOR_ID = 2;
-        public static final int BACK_LEFT_MOTOR_ID = 3;
-        public static final int BACK_RIGHT_MOTOR_ID = 4;
-    }
-
-    public final class OIConstants {
-        public static final int DRIVE_CONTROLLER_ID = 0;
-
-        public static final int DRIVE_LEFT_AXIS_ID = 0;
-        public static final int DRIVE_RIGHT_AXIS_ID = 0;
-    }
-
-    public final class BallConstants {
-        public static final int INTAKE_ID = 5;
-        public static final int HOPPER_ID = 6;
-        public static final int UPTAKE_GRABBER_ID = 7;
-        public static final int UPTAKE_LIFT_ID = 8;
-        public static final int TURRET_ID = 9;
-        public static final int RIGHT_SHOOTER_ID = 10;
-        public static final int LEFT_SHOOTER_ID = 11;
-    }
 }
