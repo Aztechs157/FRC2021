@@ -39,4 +39,13 @@ public final class Constants {
         public static final int RIGHT_SHOOTER_ID = 10;
         public static final int LEFT_SHOOTER_ID = 11;
     }
+
+    public final class PneumaticsConstants {
+        public static final int IntakeSolenoidA = 4;
+        public static final int IntakeSolenoidB = 5;
+        public static final int KickerSolenoidA = 6;
+        public static final int KickerSolenoidB = 7;
+        // PCM ID MUST MUST MUST BE 0!!!
+        public static final int PCM = 0;
+    }
 }

@@ -5,10 +5,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.drive.DriveSubsystem;
+import frc.robot.hopper.HopperSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.controls.Controller;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Intake.BallPickup;
+import frc.robot.Intake.IntakeSubsystem;
+import frc.robot.Pneumatics.PneumaticsSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -18,10 +22,12 @@ import frc.robot.controls.Controller;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private final Controller driveController = new Controller();
+    private Joystick operatorController = new Joystick(3);
 
     // The robot's subsystems and commands are defined here...
-    private final DriveSubsystem driveSubsystem = new DriveSubsystem(driveController);
+    private final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
+    private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(pneumaticsSubsystem);
+    private final HopperSubsystem hopperSubsystem = new HopperSubsystem();
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -38,15 +44,7 @@ public class RobotContainer {
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        driveController.driveForward().whenPressed(() -> driveSubsystem.tankDrive(.1, .1), driveSubsystem);
-
-        // new JoystickButton(driveController, 1).whenPressed(() ->
-        // driveSubsystem.tankDrive(.1, .1), driveSubsystem);
-        // new JoystickButton(driveController, 2).whenPressed(() ->
-        // driveSubsystem.tankDrive(0, 0), driveSubsystem);
-        // new JoystickButton(driveController, 3)
-        // .whenPressed(() -> driveSubsystem.arcadeDrive(0 /* Placeholder */, 0/*
-        // Placeholder */), driveSubsystem);
+        new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
     }
 
     /**
