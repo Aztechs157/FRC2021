@@ -12,14 +12,11 @@ import frc.robot.Constants.BallConstants;
 
 public class HopperSubsystem extends SubsystemBase {
     private CANSparkMax hopperMotor = new CANSparkMax(BallConstants.HOPPER_ID, MotorType.kBrushed);
-    private double speed = 0.2;
+    private double speed = -0.6;
 
     /** Creates a new HopperSubsystem. */
     public HopperSubsystem() {
-    }
-
-    public void initDefaultCommand() {
-
+        System.out.println("Hopper Initialized");
         setDefaultCommand(new HopperDefault(this));
     }
 

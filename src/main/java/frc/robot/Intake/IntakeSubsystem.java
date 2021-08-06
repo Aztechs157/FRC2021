@@ -16,7 +16,7 @@ public class IntakeSubsystem extends SubsystemBase {
     private PneumaticsSubsystem pneumaticsSubsystem;
     private double rollerIntakeSpeed = 1;
     private double rollerDumpSpeed = -1;
-    CANSparkMax intakeMotor = new CANSparkMax(BallConstants.INTAKE_ID, MotorType.kBrushless);
+    private CANSparkMax intakeMotor = new CANSparkMax(BallConstants.INTAKE_ID, MotorType.kBrushless);
 
     /** Creates a new Intake. */
     public IntakeSubsystem(PneumaticsSubsystem pneumaticsSubsystem) {
@@ -26,7 +26,7 @@ public class IntakeSubsystem extends SubsystemBase {
     /***
      * This function is a generic up down fuction for the intake arm.
      *
-     * @param raiseUp - true would raise the intake, false would lower the intake
+     * @param raiseUp - true would raise the intake, false would lower the intake.
      */
     public void IntakePosition(boolean raiseUp) {
         pneumaticsSubsystem.IntakeArmUp(raiseUp);

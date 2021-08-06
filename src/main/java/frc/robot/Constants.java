@@ -43,8 +43,8 @@ public final class Constants {
     public final class PneumaticsConstants {
         public static final int IntakeSolenoidA = 4;
         public static final int IntakeSolenoidB = 5;
-        public static final int KickerSolenoidA = 6;
-        public static final int KickerSolenoidB = 7;
+        public static final int GrabberSolenoidA = 6;
+        public static final int GrabberSolenoidB = 7;
         // PCM ID MUST MUST MUST BE 0!!!
         public static final int PCM = 0;
     }

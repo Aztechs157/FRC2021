@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.hopper.HopperSubsystem;
+import frc.robot.uptake.UptakeSubsystem;
+import frc.robot.uptake.UptakeTest;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Intake.BallPickup;
@@ -28,6 +30,7 @@ public class RobotContainer {
     private final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(pneumaticsSubsystem);
     private final HopperSubsystem hopperSubsystem = new HopperSubsystem();
+    private final UptakeSubsystem uptakeSubsystem = new UptakeSubsystem(pneumaticsSubsystem);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -45,6 +48,7 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
+        new JoystickButton(operatorController, 5).toggleWhenPressed(new UptakeTest(uptakeSubsystem));
     }
 
     /**
