@@ -3,14 +3,13 @@ package frc.robot.controls;
 import java.util.HashMap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Button;
-import frc.robot.controls.models.ModelEntry;
-import frc.robot.controls.schemes.Drive;
+import frc.robot.controls.schemes.First;
 import frc.robot.controls.schemes.Scheme;
 
 public class Controller {
     private final HashMap<Integer, Joystick> joysticks = new HashMap<>();
 
-    private final Scheme scheme = new Drive();
+    private final Scheme scheme = new First();
 
     private Joystick getJoystick(final int id) {
         if (!joysticks.containsKey(id)) {
@@ -19,17 +18,15 @@ public class Controller {
         return joysticks.get(id);
     }
 
-    public boolean getRawButton(final ModelEntry entry) {
+    public boolean getRawButton(final SchemeEntry entry) {
         return getJoystick(entry.joystickId).getRawButton(entry.entryId);
     }
 
-    private Button buttonFromEntry(final ModelEntry entry) {
-        // TODO: allow multiple entries passed in
-        // TODO: handle null entries
-        return new Button(() -> getRawButton(entry));
+    public Button printFoo() {
+        return new Button(() -> getRawButton(scheme.printFoo()));
     }
 
-    public Button driveForward() {
-        return buttonFromEntry(scheme.driveForward());
+    public Button printBar() {
+        return new Button(() -> getRawButton(scheme.printFoo()));
     }
 }

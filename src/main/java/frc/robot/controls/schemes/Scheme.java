@@ -1,7 +1,9 @@
 package frc.robot.controls.schemes;
 
-import frc.robot.controls.models.ModelEntry;
+import frc.robot.controls.SchemeEntry;
 
 public interface Scheme {
-    public ModelEntry driveForward();
+    public SchemeEntry printFoo();
+
+    public SchemeEntry printBar();
 }
