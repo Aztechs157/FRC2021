@@ -25,7 +25,6 @@ public final class Constants {
 
     public final class OIConstants {
         public static final int DRIVE_CONTROLLER_ID = 0;
-
         public static final int DRIVE_LEFT_AXIS_ID = 0;
         public static final int DRIVE_RIGHT_AXIS_ID = 0;
     }
@@ -35,7 +34,6 @@ public final class Constants {
         public static final int HOPPER_ID = 6;
         public static final int UPTAKE_GRABBER_ID = 7;
         public static final int UPTAKE_LIFT_ID = 8;
-        public static final int TURRET_ID = 9;
         public static final int RIGHT_SHOOTER_ID = 10;
         public static final int LEFT_SHOOTER_ID = 11;
     }
@@ -47,5 +45,12 @@ public final class Constants {
         public static final int GrabberSolenoidB = 7;
         // PCM ID MUST MUST MUST BE 0!!!
         public static final int PCM = 0;
+    }
+
+    public final class TurretConstants {
+        public static final int Potentiometer_ID = 0;
+        public static final int TURRET_ID = 9;
+        public static final double TurretMin = 1.3;
+        public static final double TurretMax = 3.5;
     }
 }
