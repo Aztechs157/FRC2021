@@ -7,18 +7,18 @@ import frc.robot.controls.models.LogitechModel;
 public class Controller extends ControllerBase {
 
     public Controller() {
-        addDefaultLayout(new Layout("First") {
+        add(new Layout("First") {
             {
-                onJoystick(0);
+                selectJoystick(0);
                 assign("printFoo", LogitechModel.A);
                 assign("printBar", LogitechModel.B);
                 assign("toggle", LogitechModel.START);
             }
         });
 
-        addLayout(new Layout("Second") {
+        add(new Layout("Second") {
             {
-                onJoystick(0);
+                selectJoystick(0);
                 assign("printFoo", LogitechModel.X);
                 assign("printBar", LogitechModel.Y);
                 assign("toggle", LogitechModel.START);

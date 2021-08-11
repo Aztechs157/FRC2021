@@ -14,7 +14,7 @@ public class ControllerBase {
     }
 
     private final Map<String, Layout> layouts = new HashMap<>();
-    private String currentLayout;
+    private String currentLayout = "First";
 
     public void toggleLayout() {
         if (currentLayout == "First") {
@@ -24,13 +24,8 @@ public class ControllerBase {
         }
     }
 
-    public void addLayout(Layout layout) {
+    public void add(Layout layout) {
         layouts.put(layout.name, layout);
-    }
-
-    public void addDefaultLayout(Layout layout) {
-        layouts.put(layout.name, layout);
-        currentLayout = layout.name;
     }
 
     public Button getButton(String action) {

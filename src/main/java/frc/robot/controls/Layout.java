@@ -12,7 +12,7 @@ public class Layout {
 
     private int currentJoystick;
 
-    public void onJoystick(final int joystickId) {
+    public void selectJoystick(final int joystickId) {
         currentJoystick = joystickId;
     }
 
