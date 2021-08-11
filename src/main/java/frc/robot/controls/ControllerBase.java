@@ -24,15 +24,13 @@ public class ControllerBase {
         }
     }
 
-    public ControllerBase addLayout(String name, Layout layout) {
-        layouts.put(name, layout);
-        return this;
+    public void addLayout(Layout layout) {
+        layouts.put(layout.name, layout);
     }
 
-    public ControllerBase addDefaultLayout(String name, Layout layout) {
-        layouts.put(name, layout);
-        currentLayout = name;
-        return this;
+    public void addDefaultLayout(Layout layout) {
+        layouts.put(layout.name, layout);
+        currentLayout = layout.name;
     }
 
     public Button getButton(String action) {
