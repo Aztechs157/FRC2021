@@ -16,13 +16,13 @@ public class Layout {
         currentJoystick = joystickId;
     }
 
-    private final Map<String, ButtonEntry> buttons = new HashMap<>();
+    private final Map<Object, ButtonEntry> buttons = new HashMap<>();
 
-    public void assign(String action, ButtonId buttonId) {
+    public void assign(Object action, ButtonId buttonId) {
         buttons.put(action, new ButtonEntry(buttonId.buttonId, currentJoystick));
     }
 
-    public ButtonEntry getButton(String action) {
+    public ButtonEntry getButton(Object action) {
         return buttons.get(action);
     }
 

@@ -28,7 +28,7 @@ public class ControllerBase {
         layouts.put(layout.name, layout);
     }
 
-    public Button getButton(String action) {
+    public Button getButton(Object action) {
         return new Button(() -> {
             var entry = layouts.get(currentLayout).getButton(action);
             return getJoystick(entry.joystickId).getRawButton(entry.buttonId);
