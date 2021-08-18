@@ -57,7 +57,7 @@ public class IntakeSubsystem extends SubsystemBase {
     /***
      * This function spins the rollers at the recommended speeds to dump a ball.
      */
-    public void RollerDumb() {
+    public void RollerDump() {
         intakeMotor.set(rollerDumpSpeed);
     }
 

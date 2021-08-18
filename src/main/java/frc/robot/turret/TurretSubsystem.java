@@ -42,9 +42,9 @@ public class TurretSubsystem extends SubsystemBase {
         double pos = GetPosition();
         if (TurretConstants.TurretMin < pos && pos < TurretConstants.TurretMax) {
             turret.set(speed);
-        } else if (pos < TurretConstants.TurretMin && speed > 0) {
+        } else if (pos <= TurretConstants.TurretMin && speed > 0) {
             turret.set(speed);
-        } else if (pos > TurretConstants.TurretMax && speed < 0) {
+        } else if (pos >= TurretConstants.TurretMax && speed < 0) {
             turret.set(speed);
         } else {
             turret.set(0);

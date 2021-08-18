@@ -2,24 +2,28 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.hopper;
+package frc.robot.Intake;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class HopperDefault extends CommandBase {
-    private HopperSubsystem hopperSubsystem;
+public class StopRollers extends CommandBase {
+    private Timer time = new Timer();
+    private double seconds = 1;
+    /** Creates a new StopRollers. */
+    private IntakeSubsystem intakeSubsystem;
 
-    /** Creates a new HopperDefault. */
-    public HopperDefault(HopperSubsystem hopperSubsystem) {
+    /** Creates a new BallPickup. */
+    public StopRollers(IntakeSubsystem intakeSubsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(hopperSubsystem);
-        this.hopperSubsystem = hopperSubsystem;
+        // addRequirements(intakeSubsystem);
+        this.intakeSubsystem = intakeSubsystem;
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        hopperSubsystem.HopperCounterClockwiseSpin();
+        time.start();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -30,12 +34,13 @@ public class HopperDefault extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        hopperSubsystem.HopperStop();
+        time.stop();
+        intakeSubsystem.RollerStop();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
+        return time.hasElapsed(seconds);
     }
 }

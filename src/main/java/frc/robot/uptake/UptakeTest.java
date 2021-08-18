@@ -10,6 +10,7 @@ import frc.robot.shooter.ShooterSubsystem;
 public class UptakeTest extends CommandBase {
     private UptakeSubsystem uptakeSubsystem;
     private ShooterSubsystem shooterSubsystem;
+    private double targetRPM = 999999999; // TODO: LOWER PLEASE THIS IS WAYY WAYYY WAYYYYY TOO HIGH
 
     /** Creates a new GrabberDefault. */
     public UptakeTest(UptakeSubsystem uptakeSubsystem, ShooterSubsystem shooterSubsystem) {
@@ -23,9 +24,6 @@ public class UptakeTest extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        uptakeSubsystem.GrabberLower();
-        uptakeSubsystem.GrabberIntake();
-        uptakeSubsystem.LiftIntake();
         shooterSubsystem.shoot();
 
     }
@@ -33,6 +31,12 @@ public class UptakeTest extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (shooterSubsystem.getRPM() >= targetRPM) {
+            uptakeSubsystem.GrabberLower();
+            uptakeSubsystem.GrabberIntake();
+            uptakeSubsystem.LiftIntake();
+        }
+
     }
 
     // Called once the command ends or is interrupted.

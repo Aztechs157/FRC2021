@@ -5,6 +5,7 @@
 package frc.robot.Intake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
 public class BallPickup extends CommandBase {
     private IntakeSubsystem intakeSubsystem;
@@ -31,7 +32,8 @@ public class BallPickup extends CommandBase {
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        intakeSubsystem.RollerStop();
+        CommandScheduler.getInstance().schedule(new StopRollers(intakeSubsystem));
+
         intakeSubsystem.IntakeUp();
     }
 

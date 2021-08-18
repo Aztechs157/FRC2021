@@ -56,7 +56,7 @@ public class PneumaticsSubsystem extends SubsystemBase {
     /***
      * This function raises or lowers the grabber arm depending on the argument
      * armUp.
-     * 
+     *
      * @param armUp - sets the position of the grabber arm. True is up, False is
      *              down.
      */

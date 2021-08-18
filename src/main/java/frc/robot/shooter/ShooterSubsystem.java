@@ -38,6 +38,19 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterLeft.set(0);
     }
 
+    /***
+     * This function returns the average rpm of the shooter motors
+     *
+     * @return - the motor RPM
+     */
+    public double getRPM() {
+        double leftRPM = shooterLeft.getEncoder().getVelocity();
+        double rightRPM = shooterRight.getEncoder().getVelocity();
+
+        double averageRPM = (leftRPM + rightRPM) / 2;
+        return averageRPM;
+    }
+
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
