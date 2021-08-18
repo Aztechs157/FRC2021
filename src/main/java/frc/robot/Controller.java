@@ -1,11 +1,17 @@
 package frc.robot;
 
 import frc.robot.controls.ControllerBase;
-import frc.robot.controls.Layout;
+import frc.robot.controls.LayoutBase;
 import frc.robot.controls.models.LogitechModel;
 import static frc.robot.Controller.Action.*;
 
-public class Controller extends ControllerBase {
+public class Controller extends ControllerBase<Controller.Action> {
+
+    private static class Layout extends LayoutBase<Controller.Action> {
+        public Layout(String name) {
+            super(name);
+        }
+    }
 
     public static enum Action {
         PrintFoo, PrintBar, Toggle

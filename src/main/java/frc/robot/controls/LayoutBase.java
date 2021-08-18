@@ -3,10 +3,10 @@ package frc.robot.controls;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Layout {
+public class LayoutBase<Action> {
     public final String name;
 
-    public Layout(final String name) {
+    public LayoutBase(final String name) {
         this.name = name;
     }
 
@@ -16,13 +16,13 @@ public class Layout {
         currentJoystick = joystickId;
     }
 
-    private final Map<Object, ButtonEntry> buttons = new HashMap<>();
+    private final Map<Action, ButtonEntry> buttons = new HashMap<>();
 
-    public void assign(Object action, ButtonId buttonId) {
+    public void assign(Action action, ButtonId buttonId) {
         buttons.put(action, new ButtonEntry(buttonId.buttonId, currentJoystick));
     }
 
-    public ButtonEntry getButton(Object action) {
+    public ButtonEntry getButton(Action action) {
         return buttons.get(action);
     }
 
