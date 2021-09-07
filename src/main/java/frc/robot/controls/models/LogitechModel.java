@@ -20,4 +20,13 @@ public class LogitechModel extends ModelBase {
 
     public final ButtonEntry leftStickPress = button(9);
     public final ButtonEntry rightStickPress = button(10);
+
+    public final AxisEntry leftStickX = axis(0);
+    public final AxisEntry leftStickY = axis(1);
+
+    public final AxisEntry rightTriggerHeld = axis(2);
+    public final AxisEntry leftTriggerHeld = axis(3);
+
+    public final AxisEntry rightStickX = axis(4);
+    public final AxisEntry rightStickY = axis(5);
 }

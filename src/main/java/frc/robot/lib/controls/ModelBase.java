@@ -21,4 +21,18 @@ public class ModelBase {
             this.buttonId = buttonId;
         }
     }
+
+    public AxisEntry axis(final int axisId) {
+        return new AxisEntry(joystickId, axisId);
+    }
+
+    public static class AxisEntry {
+        public final int joystickId;
+        public final int axisId;
+
+        public AxisEntry(final int joystickId, final int axisId) {
+            this.joystickId = joystickId;
+            this.axisId = axisId;
+        }
+    }
 }

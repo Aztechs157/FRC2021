@@ -5,8 +5,9 @@ import frc.robot.lib.controls.LayoutBase;
 import frc.robot.controls.models.LogitechModel;
 import frc.robot.controls.Controller.Action;
 import static frc.robot.controls.Controller.Action.*;
+import frc.robot.controls.Controller.Axis;
 
-public class Controller extends ControllerBase<Action> {
+public class Controller extends ControllerBase<Action, Axis> {
 
     public Controller() {
         add(new Layout("First") {
@@ -14,6 +15,7 @@ public class Controller extends ControllerBase<Action> {
                 assign(PrintFoo, logitech.a);
                 assign(PrintBar, logitech.b);
                 assign(Toggle, logitech.start);
+                assign(Axis.Foo, logitech.leftStickX);
             }
         });
 
@@ -22,6 +24,7 @@ public class Controller extends ControllerBase<Action> {
                 assign(PrintFoo, logitech.x);
                 assign(PrintBar, logitech.y);
                 assign(Toggle, logitech.start);
+                assign(Axis.Foo, logitech.rightStickX);
             }
         });
     }
@@ -32,7 +35,11 @@ public class Controller extends ControllerBase<Action> {
         PrintFoo, PrintBar, Toggle
     }
 
-    private static class Layout extends LayoutBase<Action> {
+    public static enum Axis {
+        Foo
+    }
+
+    private static class Layout extends LayoutBase<Action, Axis> {
         public Layout(String name) {
             super(name);
         }
