@@ -40,7 +40,7 @@ public class Controller extends ControllerBase<Action, Axis> {
     }
 
     private static class Layout extends LayoutBase<Action, Axis> {
-        public Layout(String name) {
+        public Layout(final String name) {
             super(name);
         }
     }

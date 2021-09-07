@@ -8,7 +8,7 @@ import frc.robot.lib.controls.ModelBase.AxisEntry;
 
 public class LayoutBase<Action, Axis> {
 
-    public String name;
+    public final String name;
 
     public LayoutBase(final String name) {
         this.name = name;
@@ -16,21 +16,21 @@ public class LayoutBase<Action, Axis> {
 
     private final Map<Action, ButtonEntry> buttons = new HashMap<>();
 
-    public void assign(Action action, ButtonEntry entry) {
+    public void assign(final Action action, final ButtonEntry entry) {
         buttons.put(action, entry);
     }
 
-    public ButtonEntry getButton(Action action) {
+    public ButtonEntry getButton(final Action action) {
         return buttons.get(action);
     }
 
     private final Map<Axis, AxisEntry> axies = new HashMap<>();
 
-    public void assign(Axis axis, AxisEntry entry) {
+    public void assign(final Axis axis, final AxisEntry entry) {
         axies.put(axis, entry);
     }
 
-    public AxisEntry getAxis(Axis axis) {
+    public AxisEntry getAxis(final Axis axis) {
         return axies.get(axis);
     }
 }
