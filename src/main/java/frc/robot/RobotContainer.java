@@ -6,10 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.controls.Controller;
 import frc.robot.controls.Controller.Action;
+import frc.robot.controls.Controller.Axis;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -38,7 +40,8 @@ public class RobotContainer {
     private void configureButtonBindings() {
         controller.getButton(Action.PrintFoo).whenPressed(new PrintCommand("foo"));
         controller.getButton(Action.PrintBar).whenPressed(new PrintCommand("bar"));
-        controller.getButton(Action.Toggle).whenPressed(() -> controller.toggleLayout());
+
+        Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(Axis.Foo));
     }
 
     /**

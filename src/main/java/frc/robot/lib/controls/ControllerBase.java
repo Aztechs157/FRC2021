@@ -1,10 +1,11 @@
 package frc.robot.lib.controls;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 public class ControllerBase<Action, Axis> {
@@ -14,27 +15,31 @@ public class ControllerBase<Action, Axis> {
         return joysticks.computeIfAbsent(id, Joystick::new);
     }
 
-    private final ArrayList<LayoutBase<Action, Axis>> layouts = new ArrayList<>();
-    private int currentLayout = 0;
+    private SendableChooser<LayoutBase<Action, Axis>> layouts = new SendableChooser<>();
+    private boolean isEmpty = true;
 
-    public void toggleLayout() {
-        currentLayout++;
-        currentLayout %= layouts.size();
+    {
+        Shuffleboard.getTab("Config").add("Layout", layouts);
     }
 
     public void add(final LayoutBase<Action, Axis> layout) {
-        layouts.add(layout);
+        if (isEmpty) {
+            isEmpty = false;
+            layouts.setDefaultOption(layout.name, layout);
+        } else {
+            layouts.addOption(layout.name, layout);
+        }
     }
 
     public Button getButton(final Action action) {
         return new Button(() -> {
-            final var entry = layouts.get(currentLayout).getButton(action);
+            final var entry = layouts.getSelected().getButton(action);
             return getJoystick(entry.joystickId).getRawButton(entry.buttonId);
         });
     }
 
     public double getAxis(final Axis axis) {
-        final var entry = layouts.get(currentLayout).getAxis(axis);
+        final var entry = layouts.getSelected().getAxis(axis);
         return getJoystick(entry.joystickId).getRawAxis(entry.axisId);
     }
 }

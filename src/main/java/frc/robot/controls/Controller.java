@@ -14,7 +14,6 @@ public class Controller extends ControllerBase<Action, Axis> {
             {
                 assign(PrintFoo, logitech.a);
                 assign(PrintBar, logitech.b);
-                assign(Toggle, logitech.start);
                 assign(Axis.Foo, logitech.leftStickX);
             }
         });
@@ -23,7 +22,6 @@ public class Controller extends ControllerBase<Action, Axis> {
             {
                 assign(PrintFoo, logitech.x);
                 assign(PrintBar, logitech.y);
-                assign(Toggle, logitech.start);
                 assign(Axis.Foo, logitech.rightStickX);
             }
         });
