@@ -1,5 +1,6 @@
 package frc.robot.lib.controls;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,19 +14,16 @@ public class ControllerBase<Action> {
         return joysticks.computeIfAbsent(id, Joystick::new);
     }
 
-    private final Map<String, LayoutBase<Action>> layouts = new HashMap<>();
-    private String currentLayout = "First";
+    private final ArrayList<LayoutBase<Action>> layouts = new ArrayList<>();
+    private int currentLayout = 0;
 
     public void toggleLayout() {
-        if (currentLayout == "First") {
-            currentLayout = "Second";
-        } else if (currentLayout == "Second") {
-            currentLayout = "First";
-        }
+        currentLayout++;
+        currentLayout %= layouts.size();
     }
 
-    public void add(String name, LayoutBase<Action> layout) {
-        layouts.put(name, layout);
+    public void add(LayoutBase<Action> layout) {
+        layouts.add(layout);
     }
 
     public Button getButton(Action action) {
