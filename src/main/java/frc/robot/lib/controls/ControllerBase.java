@@ -1,5 +1,6 @@
 package frc.robot.lib.controls;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +34,10 @@ public class ControllerBase<Action, Axis> {
 
     public Button getButton(final Action action) {
         return new Button(() -> {
-            final var entry = layouts.getSelected().getButton(action);
-            return getJoystick(entry.joystickId).getRawButton(entry.buttonId);
+            final var entries = layouts.getSelected().getButtons(action);
+            return Arrays.stream(entries).allMatch(entry -> {
+                return getJoystick(entry.joystickId).getRawButton(entry.buttonId);
+            });
         });
     }
 

@@ -12,8 +12,8 @@ public class Controller extends ControllerBase<Action, Axis> {
     public Controller() {
         add(new Layout("First") {
             {
-                assign(PrintFoo, logitech.a);
-                assign(PrintBar, logitech.b);
+                assign(PrintFoo, logitech.a, logitech.x);
+                assign(PrintBar, logitech.b, logitech.y);
                 assign(Axis.Foo, logitech.leftStickX);
             }
         });

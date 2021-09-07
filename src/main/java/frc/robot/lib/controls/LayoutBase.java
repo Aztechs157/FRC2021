@@ -14,13 +14,13 @@ public class LayoutBase<Action, Axis> {
         this.name = name;
     }
 
-    private final Map<Action, ButtonEntry> buttons = new HashMap<>();
+    private final Map<Action, ButtonEntry[]> buttons = new HashMap<>();
 
-    public void assign(final Action action, final ButtonEntry entry) {
+    public void assign(final Action action, final ButtonEntry... entry) {
         buttons.put(action, entry);
     }
 
-    public ButtonEntry getButton(final Action action) {
+    public ButtonEntry[] getButtons(final Action action) {
         return buttons.get(action);
     }
 
