@@ -1,13 +1,14 @@
-package frc.robot;
+package frc.robot.controls;
 
-import frc.robot.controls.ControllerBase;
-import frc.robot.controls.LayoutBase;
+import frc.robot.lib.controls.ControllerBase;
+import frc.robot.lib.controls.LayoutBase;
 import frc.robot.controls.models.LogitechModel;
-import static frc.robot.Controller.Action.*;
+import frc.robot.controls.Controller.Action;
+import static frc.robot.controls.Controller.Action.*;
 
-public class Controller extends ControllerBase<Controller.Action> {
+public class Controller extends ControllerBase<Action> {
 
-    private static class Layout extends LayoutBase<Controller.Action> {
+    private static class Layout extends LayoutBase<Action> {
     }
 
     public static enum Action {

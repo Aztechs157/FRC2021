@@ -1,4 +1,4 @@
-package frc.robot.controls;
+package frc.robot.lib.controls;
 
 public class ModelBase {
 

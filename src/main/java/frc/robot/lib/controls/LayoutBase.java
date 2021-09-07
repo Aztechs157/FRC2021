@@ -1,9 +1,9 @@
-package frc.robot.controls;
+package frc.robot.lib.controls;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import frc.robot.controls.ModelBase.ButtonEntry;
+import frc.robot.lib.controls.ModelBase.ButtonEntry;
 
 public class LayoutBase<Action> {
 

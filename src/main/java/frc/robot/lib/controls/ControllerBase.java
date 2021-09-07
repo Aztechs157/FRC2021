@@ -1,4 +1,4 @@
-package frc.robot.controls;
+package frc.robot.lib.controls;
 
 import java.util.HashMap;
 import java.util.Map;

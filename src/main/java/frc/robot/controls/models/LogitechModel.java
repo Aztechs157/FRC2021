@@ -1,6 +1,6 @@
 package frc.robot.controls.models;
 
-import frc.robot.controls.ModelBase;
+import frc.robot.lib.controls.ModelBase;
 
 public class LogitechModel extends ModelBase {
     public LogitechModel(final int joystickId) {
