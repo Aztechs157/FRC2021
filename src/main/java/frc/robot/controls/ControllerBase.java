@@ -24,8 +24,8 @@ public class ControllerBase<Action> {
         }
     }
 
-    public void add(LayoutBase<Action> layout) {
-        layouts.put(layout.name, layout);
+    public void add(String name, LayoutBase<Action> layout) {
+        layouts.put(name, layout);
     }
 
     public Button getButton(Action action) {

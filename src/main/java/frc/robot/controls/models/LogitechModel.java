@@ -1,32 +1,23 @@
 package frc.robot.controls.models;
 
-import frc.robot.controls.ButtonId;
+import frc.robot.controls.ModelBase;
 
-public class LogitechModel {
-    // #region Button definitions
-    public static final ButtonId A = new ButtonId(1);
-    public static final ButtonId B = new ButtonId(2);
-    public static final ButtonId X = new ButtonId(3);
-    public static final ButtonId Y = new ButtonId(4);
+public class LogitechModel extends ModelBase {
+    public LogitechModel(final int joystickId) {
+        super(joystickId);
+    }
 
-    public static final ButtonId LEFT_BUMPER = new ButtonId(5);
-    public static final ButtonId RIGHT_BUMPER = new ButtonId(6);
+    public final ButtonEntry a = button(1);
+    public final ButtonEntry b = button(2);
+    public final ButtonEntry x = button(3);
+    public final ButtonEntry y = button(4);
 
-    public static final ButtonId BACK = new ButtonId(7);
-    public static final ButtonId START = new ButtonId(8);
+    public final ButtonEntry leftBumper = button(5);
+    public final ButtonEntry rightBumper = button(6);
 
-    public static final ButtonId LEFT_STICK_PUSH = new ButtonId(9);
-    public static final ButtonId RIGHT_STICK_PUSH = new ButtonId(10);
-    // #endregion
+    public final ButtonEntry back = button(7);
+    public final ButtonEntry start = button(8);
 
-    // #region Axis definitions
-    // public static final ButtonId LEFT_STICK_X = new ButtonId(0);
-    // public static final ButtonId LEFT_STICK_Y = new ButtonId(1);
-
-    // public static final ButtonId LEFT_TRIGGER_HELD = new ButtonId(2);
-    // public static final ButtonId RIGHT_TRIGGER_HELD = new ButtonId(3);
-
-    // public static final ButtonId RIGHT_STICK_X = new ButtonId(4);
-    // public static final ButtonId RIGHT_STICK_Y = new ButtonId(5);
-    // #endregion
+    public final ButtonEntry leftStickPress = button(9);
+    public final ButtonEntry rightStickPress = button(10);
 }

@@ -8,31 +8,28 @@ import static frc.robot.Controller.Action.*;
 public class Controller extends ControllerBase<Controller.Action> {
 
     private static class Layout extends LayoutBase<Controller.Action> {
-        public Layout(String name) {
-            super(name);
-        }
     }
 
     public static enum Action {
         PrintFoo, PrintBar, Toggle
     }
 
+    private final LogitechModel logitech = new LogitechModel(0);
+
     public Controller() {
-        add(new Layout("First") {
+        add("First", new Layout() {
             {
-                selectJoystick(0);
-                assign(PrintFoo, LogitechModel.A);
-                assign(PrintBar, LogitechModel.B);
-                assign(Toggle, LogitechModel.START);
+                assign(PrintFoo, logitech.a);
+                assign(PrintBar, logitech.b);
+                assign(Toggle, logitech.start);
             }
         });
 
-        add(new Layout("Second") {
+        add("Second", new Layout() {
             {
-                selectJoystick(0);
-                assign(PrintFoo, LogitechModel.X);
-                assign(PrintBar, LogitechModel.Y);
-                assign(Toggle, LogitechModel.START);
+                assign(PrintFoo, logitech.x);
+                assign(PrintBar, logitech.y);
+                assign(Toggle, logitech.start);
             }
         });
     }
