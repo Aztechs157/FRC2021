@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Intake.BallPickup;
 import frc.robot.Intake.IntakeSubsystem;
 import frc.robot.Pneumatics.PneumaticsSubsystem;
+import frc.robot.aimer.AimerSubsystem;
+import frc.robot.aimer.AimerDebug;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -35,6 +37,7 @@ public class RobotContainer {
     private final UptakeSubsystem uptakeSubsystem = new UptakeSubsystem(pneumaticsSubsystem);
     private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     private final TurretSubsystem turretSubsystem = new TurretSubsystem(operatorController);
+    private final AimerSubsystem aimerSubsystem = new AimerSubsystem();
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -53,6 +56,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
         new JoystickButton(operatorController, 5).toggleWhenPressed(new UptakeTest(uptakeSubsystem, shooterSubsystem));
+        new JoystickButton(operatorController, 1).whenPressed(new AimerDebug(aimerSubsystem));
     }
 
     /**
