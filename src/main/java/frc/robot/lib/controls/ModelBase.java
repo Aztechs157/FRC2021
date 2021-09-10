@@ -2,14 +2,14 @@ package frc.robot.lib.controls;
 
 public class ModelBase {
 
-    private final int joystickId;
+    private final int[] joystickIds;
 
-    public ModelBase(final int joystickId) {
-        this.joystickId = joystickId;
+    public ModelBase(final int... joystickIds) {
+        this.joystickIds = joystickIds;
     }
 
-    public ButtonEntry button(final int buttonId) {
-        return new ButtonEntry(joystickId, buttonId);
+    public ButtonEntry button(final int joystickIndex, final int buttonId) {
+        return new ButtonEntry(joystickIds[joystickIndex], buttonId);
     }
 
     public static class ButtonEntry {
@@ -22,8 +22,8 @@ public class ModelBase {
         }
     }
 
-    public AxisEntry axis(final int axisId) {
-        return new AxisEntry(joystickId, axisId);
+    public AxisEntry axis(final int joystickIndex, final int axisId) {
+        return new AxisEntry(joystickIds[joystickIndex], axisId);
     }
 
     public static class AxisEntry {
