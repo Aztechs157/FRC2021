@@ -4,19 +4,19 @@ import edu.wpi.first.wpilibj.DriverStation;
 
 public class ModelBase {
 
-    private final int[] joystickIds;
+    private final int joystickId;
 
-    public ModelBase(final int... joystickIds) {
-        this.joystickIds = joystickIds;
+    public ModelBase(final int joystickId) {
+        this.joystickId = joystickId;
     }
 
     private static DriverStation driverStation = DriverStation.getInstance();
 
-    public ButtonInput button(final int joystickIndex, final int buttonId) {
-        return () -> driverStation.getStickButton(joystickIds[joystickIndex], buttonId);
+    public ButtonInput button(final int buttonId) {
+        return () -> driverStation.getStickButton(joystickId, buttonId);
     }
 
-    public AxisInput axis(final int joystickIndex, final int axisId) {
-        return () -> driverStation.getStickAxis(joystickIds[joystickIndex], axisId);
+    public AxisInput axis(final int axisId) {
+        return () -> driverStation.getStickAxis(joystickId, axisId);
     }
 }
