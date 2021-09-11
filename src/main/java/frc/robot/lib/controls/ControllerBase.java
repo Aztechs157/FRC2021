@@ -24,11 +24,10 @@ public class ControllerBase<Action, Axis> {
     }
 
     public Button getButton(final Action action) {
-        return new Button(() -> layouts.getSelected().getButtons(action).get(inputContext));
+        return new Button(() -> layouts.getSelected().getButton(action).get(inputContext));
     }
 
     public double getAxis(final Axis axis) {
-        final var entry = layouts.getSelected().getAxis(axis);
-        return inputContext.getJoystick(entry.joystickId).getRawAxis(entry.axisId);
+        return layouts.getSelected().getAxis(axis).get(inputContext);
     }
 }

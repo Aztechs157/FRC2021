@@ -14,17 +14,9 @@ public class ModelBase {
         };
     }
 
-    public AxisEntry axis(final int joystickIndex, final int axisId) {
-        return new AxisEntry(joystickIds[joystickIndex], axisId);
-    }
-
-    public static class AxisEntry {
-        public final int joystickId;
-        public final int axisId;
-
-        public AxisEntry(final int joystickId, final int axisId) {
-            this.joystickId = joystickId;
-            this.axisId = axisId;
-        }
+    public NumberInput axis(final int joystickIndex, final int axisId) {
+        return (final InputContext context) -> {
+            return context.getJoystick(joystickIds[joystickIndex]).getRawAxis(axisId);
+        };
     }
 }
