@@ -13,14 +13,10 @@ public class ModelBase {
     private static DriverStation driverStation = DriverStation.getInstance();
 
     public ButtonInput button(final int joystickIndex, final int buttonId) {
-        return () -> {
-            return driverStation.getStickButton(joystickIds[joystickIndex], buttonId);
-        };
+        return () -> driverStation.getStickButton(joystickIds[joystickIndex], buttonId);
     }
 
     public AxisInput axis(final int joystickIndex, final int axisId) {
-        return () -> {
-            return driverStation.getStickAxis(joystickIds[joystickIndex], axisId);
-        };
+        return () -> driverStation.getStickAxis(joystickIds[joystickIndex], axisId);
     }
 }

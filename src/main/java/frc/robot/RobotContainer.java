@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.controls.Controller;
-import frc.robot.controls.Controller.Action;
-import frc.robot.controls.Controller.Axis;
+import frc.robot.controls.Controller.ButtonKey;
+import frc.robot.controls.Controller.AxisKey;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -38,10 +38,10 @@ public class RobotContainer {
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        controller.on(Action.PrintFoo).whenPressed(new PrintCommand("foo"));
-        controller.on(Action.PrintBar).whenPressed(new PrintCommand("bar"));
+        controller.on(ButtonKey.PrintFoo).whenPressed(new PrintCommand("foo"));
+        controller.on(ButtonKey.PrintBar).whenPressed(new PrintCommand("bar"));
 
-        Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(Axis.Foo));
+        Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(AxisKey.Foo));
     }
 
     /**

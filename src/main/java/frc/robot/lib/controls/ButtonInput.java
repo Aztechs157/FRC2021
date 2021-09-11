@@ -5,23 +5,15 @@ public interface ButtonInput {
 
     public boolean get();
 
-    public static ButtonInput all(final ButtonInput... inputs) {
-        return () -> {
-            for (final var input : inputs)
-                if (input.get() == false)
-                    return false;
-
-            return true;
-        };
+    public default ButtonInput and(final ButtonInput other) {
+        return () -> this.get() && other.get();
     }
 
-    public static ButtonInput any(final ButtonInput... inputs) {
-        return () -> {
-            for (final var input : inputs)
-                if (input.get())
-                    return true;
+    public default ButtonInput or(final ButtonInput other) {
+        return () -> this.get() || other.get();
+    }
 
-            return false;
-        };
+    public static ButtonInput always(final boolean value) {
+        return () -> value;
     }
 }

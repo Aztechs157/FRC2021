@@ -3,7 +3,7 @@ package frc.robot.lib.controls;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LayoutBase<Action, Axis> {
+public class LayoutBase<ButtonKey, AxisKey> {
 
     public final String name;
 
@@ -11,23 +11,23 @@ public class LayoutBase<Action, Axis> {
         this.name = name;
     }
 
-    private final Map<Action, ButtonInput> buttons = new HashMap<>();
+    private final Map<ButtonKey, ButtonInput> buttons = new HashMap<>();
 
-    public void assign(final Action action, final ButtonInput input) {
+    public void assign(final ButtonKey action, final ButtonInput input) {
         buttons.put(action, input);
     }
 
-    public ButtonInput getButton(final Action action) {
+    public ButtonInput getButton(final ButtonKey action) {
         return buttons.get(action);
     }
 
-    private final Map<Axis, AxisInput> axes = new HashMap<>();
+    private final Map<AxisKey, AxisInput> axes = new HashMap<>();
 
-    public void assign(final Axis axis, final AxisInput input) {
+    public void assign(final AxisKey axis, final AxisInput input) {
         axes.put(axis, input);
     }
 
-    public AxisInput getAxis(final Axis axis) {
+    public AxisInput getAxis(final AxisKey axis) {
         return axes.get(axis);
     }
 }
