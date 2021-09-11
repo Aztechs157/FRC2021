@@ -5,12 +5,6 @@ public interface BooleanInput {
 
     public boolean get(final InputContext context);
 
-    public static BooleanInput button(final int joystickId, final int buttonId) {
-        return (final InputContext context) -> {
-            return context.getJoystick(joystickId).getRawButton(buttonId);
-        };
-    }
-
     public static BooleanInput all(final BooleanInput... inputs) {
         return (final InputContext context) -> {
             for (final var input : inputs)

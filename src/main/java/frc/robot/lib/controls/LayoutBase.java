@@ -3,7 +3,6 @@ package frc.robot.lib.controls;
 import java.util.HashMap;
 import java.util.Map;
 
-import frc.robot.lib.controls.ModelBase.ButtonEntry;
 import frc.robot.lib.controls.ModelBase.AxisEntry;
 
 public class LayoutBase<Action, Axis> {
@@ -14,13 +13,13 @@ public class LayoutBase<Action, Axis> {
         this.name = name;
     }
 
-    private final Map<Action, ButtonEntry[]> buttons = new HashMap<>();
+    private final Map<Action, BooleanInput> buttons = new HashMap<>();
 
-    public void assign(final Action action, final ButtonEntry... entry) {
-        buttons.put(action, entry);
+    public void assign(final Action action, final BooleanInput input) {
+        buttons.put(action, input);
     }
 
-    public ButtonEntry[] getButtons(final Action action) {
+    public BooleanInput getButtons(final Action action) {
         return buttons.get(action);
     }
 

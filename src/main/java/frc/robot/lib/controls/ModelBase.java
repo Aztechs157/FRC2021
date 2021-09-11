@@ -8,18 +8,10 @@ public class ModelBase {
         this.joystickIds = joystickIds;
     }
 
-    public ButtonEntry button(final int joystickIndex, final int buttonId) {
-        return new ButtonEntry(joystickIds[joystickIndex], buttonId);
-    }
-
-    public static class ButtonEntry {
-        public final int joystickId;
-        public final int buttonId;
-
-        public ButtonEntry(final int joystickId, final int buttonId) {
-            this.joystickId = joystickId;
-            this.buttonId = buttonId;
-        }
+    public BooleanInput button(final int joystickIndex, final int buttonId) {
+        return (final InputContext context) -> {
+            return context.getJoystick(joystickIds[joystickIndex]).getRawButton(buttonId);
+        };
     }
 
     public AxisEntry axis(final int joystickIndex, final int axisId) {
