@@ -19,22 +19,21 @@ public class AimerSubsystem extends SubsystemBase {
     }
 
     /**
-     * This will print the left servo position
-     *
-     * @return - left servo position
+     * This method sets the servo's position to whatever 1 is TODO: figure out what
+     * 1 is
      */
-    public double getLeftPosition() {
-        return leftServo.getAngle();
-
+    public void AimerMaxPosition() {
+        rightServo.set(0.5);
+        leftServo.set(0);
     }
 
     /**
-     * This will print the left servo position
-     *
-     * @return - right servo position
+     * This method sets the servo's position to whatever 0 is TODO: figure out what
+     * 0 is
      */
-    public double getRightPosition() {
-        return rightServo.getAngle();
+    public void AimerMinPosition() {
+        rightServo.set(0);
+        leftServo.set(0.5);
     }
 
     @Override

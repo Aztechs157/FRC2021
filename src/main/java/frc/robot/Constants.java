@@ -52,7 +52,7 @@ public final class Constants {
         public static final int TURRET_ID = 9;
         public static final double TurretMin = 1.3;
         public static final double TurretMax = 3.5;
-        public static final int leftServo = 0;
-        public static final int rightServo = 1;
+        public static final int leftServo = 1;
+        public static final int rightServo = 0;
     }
 }

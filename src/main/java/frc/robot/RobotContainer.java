@@ -56,7 +56,7 @@ public class RobotContainer {
     private void configureButtonBindings() {
         new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
         new JoystickButton(operatorController, 5).toggleWhenPressed(new UptakeTest(uptakeSubsystem, shooterSubsystem));
-        new JoystickButton(operatorController, 1).whenPressed(new AimerDebug(aimerSubsystem));
+        new JoystickButton(operatorController, 1).toggleWhenPressed(new AimerDebug(aimerSubsystem));
     }
 
     /**
