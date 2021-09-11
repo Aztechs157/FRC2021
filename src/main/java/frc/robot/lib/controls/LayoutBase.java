@@ -11,23 +11,23 @@ public class LayoutBase<Action, Axis> {
         this.name = name;
     }
 
-    private final Map<Action, BooleanInput> buttons = new HashMap<>();
+    private final Map<Action, ButtonInput> buttons = new HashMap<>();
 
-    public void assign(final Action action, final BooleanInput input) {
+    public void assign(final Action action, final ButtonInput input) {
         buttons.put(action, input);
     }
 
-    public BooleanInput getButton(final Action action) {
+    public ButtonInput getButton(final Action action) {
         return buttons.get(action);
     }
 
-    private final Map<Axis, NumberInput> axies = new HashMap<>();
+    private final Map<Axis, AxisInput> axies = new HashMap<>();
 
-    public void assign(final Axis axis, final NumberInput input) {
+    public void assign(final Axis axis, final AxisInput input) {
         axies.put(axis, input);
     }
 
-    public NumberInput getAxis(final Axis axis) {
+    public AxisInput getAxis(final Axis axis) {
         return axies.get(axis);
     }
 }

@@ -23,8 +23,12 @@ public class ControllerBase<Action, Axis> {
         }
     }
 
-    public Button getButton(final Action action) {
-        return new Button(() -> layouts.getSelected().getButton(action).get(inputContext));
+    public Button on(final Action action) {
+        return new Button(() -> getButton(action));
+    }
+
+    public boolean getButton(final Action action) {
+        return layouts.getSelected().getButton(action).get(inputContext);
     }
 
     public double getAxis(final Axis axis) {

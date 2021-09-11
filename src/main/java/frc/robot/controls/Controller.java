@@ -6,7 +6,7 @@ import frc.robot.controls.models.LogitechModel;
 import frc.robot.controls.Controller.Action;
 import static frc.robot.controls.Controller.Action.*;
 import frc.robot.controls.Controller.Axis;
-import static frc.robot.lib.controls.BooleanInput.*;
+import static frc.robot.lib.controls.ButtonInput.*;
 
 public class Controller extends ControllerBase<Action, Axis> {
 

@@ -38,8 +38,8 @@ public class RobotContainer {
      * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        controller.getButton(Action.PrintFoo).whenPressed(new PrintCommand("foo"));
-        controller.getButton(Action.PrintBar).whenPressed(new PrintCommand("bar"));
+        controller.on(Action.PrintFoo).whenPressed(new PrintCommand("foo"));
+        controller.on(Action.PrintBar).whenPressed(new PrintCommand("bar"));
 
         Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(Axis.Foo));
     }

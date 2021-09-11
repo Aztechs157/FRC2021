@@ -1,11 +1,11 @@
 package frc.robot.lib.controls;
 
 @FunctionalInterface
-public interface BooleanInput {
+public interface ButtonInput {
 
     public boolean get(final InputContext context);
 
-    public static BooleanInput all(final BooleanInput... inputs) {
+    public static ButtonInput all(final ButtonInput... inputs) {
         return (final InputContext context) -> {
             for (final var input : inputs)
                 if (input.get(context) == false)
@@ -15,7 +15,7 @@ public interface BooleanInput {
         };
     }
 
-    public static BooleanInput any(final BooleanInput... inputs) {
+    public static ButtonInput any(final ButtonInput... inputs) {
         return (final InputContext context) -> {
             for (final var input : inputs)
                 if (input.get(context))
