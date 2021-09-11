@@ -36,7 +36,9 @@ public class RobotContainer {
         controller.button(ButtonKey.PrintFoo).whenPressed(new PrintCommand("foo"));
         controller.button(ButtonKey.PrintBar).whenPressed(new PrintCommand("bar"));
 
-        Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(AxisKey.Foo));
+        var tab = Shuffleboard.getTab("Config");
+        tab.add(controller);
+        tab.addNumber("Axis", () -> controller.getAxis(AxisKey.Foo));
     }
 
     /**

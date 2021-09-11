@@ -1,25 +1,25 @@
 package frc.robot.lib.controls;
 
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
-public class ControllerBase<ButtonKey, AxisKey> {
+public class ControllerBase<ButtonKey, AxisKey> implements Sendable {
 
     private SendableChooser<LayoutBase<ButtonKey, AxisKey>> layouts = new SendableChooser<>();
-    private boolean isEmpty = true;
 
-    {
-        Shuffleboard.getTab("Config").add("Layout", layouts);
+    @Override
+    public void initSendable(final SendableBuilder builder) {
+        layouts.initSendable(builder);
+    }
+
+    public void addDefault(final LayoutBase<ButtonKey, AxisKey> layout) {
+        layouts.setDefaultOption(layout.name, layout);
     }
 
     public void add(final LayoutBase<ButtonKey, AxisKey> layout) {
-        if (isEmpty) {
-            isEmpty = false;
-            layouts.setDefaultOption(layout.name, layout);
-        } else {
-            layouts.addOption(layout.name, layout);
-        }
+        layouts.addOption(layout.name, layout);
     }
 
     public Button button(final ButtonKey action) {

@@ -11,7 +11,7 @@ import static frc.robot.lib.controls.ButtonInput.*;
 public class Controller extends ControllerBase<ButtonKey, AxisKey> {
 
     public Controller() {
-        add(new Layout("First") {
+        addDefault(new Layout("First") {
             {
                 assign(PrintFoo, all(logitech.a, logitech.x));
                 assign(PrintBar, all(logitech.b, logitech.y));
