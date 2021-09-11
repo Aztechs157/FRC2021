@@ -33,8 +33,8 @@ public class RobotContainer {
      * Use this method to define your button->command mappings.
      */
     private void configureButtonBindings() {
-        controller.on(ButtonKey.PrintFoo).whenPressed(new PrintCommand("foo"));
-        controller.on(ButtonKey.PrintBar).whenPressed(new PrintCommand("bar"));
+        controller.button(ButtonKey.PrintFoo).whenPressed(new PrintCommand("foo"));
+        controller.button(ButtonKey.PrintBar).whenPressed(new PrintCommand("bar"));
 
         Shuffleboard.getTab("Config").addNumber("Axis", () -> controller.getAxis(AxisKey.Foo));
     }

@@ -6,14 +6,15 @@ import frc.robot.controls.models.LogitechModel;
 import frc.robot.controls.Controller.ButtonKey;
 import static frc.robot.controls.Controller.ButtonKey.*;
 import frc.robot.controls.Controller.AxisKey;
+import static frc.robot.lib.controls.ButtonInput.*;
 
 public class Controller extends ControllerBase<ButtonKey, AxisKey> {
 
     public Controller() {
         add(new Layout("First") {
             {
-                assign(PrintFoo, logitech.a.and(logitech.x));
-                assign(PrintBar, logitech.b.and(logitech.y));
+                assign(PrintFoo, all(logitech.a, logitech.x));
+                assign(PrintBar, all(logitech.b, logitech.y));
                 assign(AxisKey.Foo, logitech.leftStickX);
             }
         });

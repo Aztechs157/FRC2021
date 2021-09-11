@@ -22,7 +22,7 @@ public class ControllerBase<ButtonKey, AxisKey> {
         }
     }
 
-    public Button on(final ButtonKey action) {
+    public Button button(final ButtonKey action) {
         return new Button(() -> getButton(action));
     }
 
