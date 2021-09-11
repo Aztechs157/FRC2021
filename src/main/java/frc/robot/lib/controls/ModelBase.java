@@ -1,5 +1,7 @@
 package frc.robot.lib.controls;
 
+import edu.wpi.first.wpilibj.DriverStation;
+
 public class ModelBase {
 
     private final int[] joystickIds;
@@ -8,15 +10,17 @@ public class ModelBase {
         this.joystickIds = joystickIds;
     }
 
+    private static DriverStation driverStation = DriverStation.getInstance();
+
     public ButtonInput button(final int joystickIndex, final int buttonId) {
-        return (final InputContext context) -> {
-            return context.getJoystick(joystickIds[joystickIndex]).getRawButton(buttonId);
+        return () -> {
+            return driverStation.getStickButton(joystickIds[joystickIndex], buttonId);
         };
     }
 
     public AxisInput axis(final int joystickIndex, final int axisId) {
-        return (final InputContext context) -> {
-            return context.getJoystick(joystickIds[joystickIndex]).getRawAxis(axisId);
+        return () -> {
+            return driverStation.getStickAxis(joystickIds[joystickIndex], axisId);
         };
     }
 }

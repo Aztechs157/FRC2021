@@ -3,12 +3,12 @@ package frc.robot.lib.controls;
 @FunctionalInterface
 public interface ButtonInput {
 
-    public boolean get(final InputContext context);
+    public boolean get();
 
     public static ButtonInput all(final ButtonInput... inputs) {
-        return (final InputContext context) -> {
+        return () -> {
             for (final var input : inputs)
-                if (input.get(context) == false)
+                if (input.get() == false)
                     return false;
 
             return true;
@@ -16,9 +16,9 @@ public interface ButtonInput {
     }
 
     public static ButtonInput any(final ButtonInput... inputs) {
-        return (final InputContext context) -> {
+        return () -> {
             for (final var input : inputs)
-                if (input.get(context))
+                if (input.get())
                     return true;
 
             return false;

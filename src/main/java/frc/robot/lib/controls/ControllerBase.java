@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 public class ControllerBase<Action, Axis> {
-    private final InputContext inputContext = new InputContext();
 
     private SendableChooser<LayoutBase<Action, Axis>> layouts = new SendableChooser<>();
     private boolean isEmpty = true;
@@ -28,10 +27,10 @@ public class ControllerBase<Action, Axis> {
     }
 
     public boolean getButton(final Action action) {
-        return layouts.getSelected().getButton(action).get(inputContext);
+        return layouts.getSelected().getButton(action).get();
     }
 
     public double getAxis(final Axis axis) {
-        return layouts.getSelected().getAxis(axis).get(inputContext);
+        return layouts.getSelected().getAxis(axis).get();
     }
 }
