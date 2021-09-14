@@ -1,8 +1,18 @@
 package frc.robot.lib.controls;
 
+/**
+ * Interface for getting input from a button. This class has methods and static
+ * methods to modify and compose {@link ButtonInput}s into a new
+ * {@link ButtonInput}.
+ */
 @FunctionalInterface
 public interface ButtonInput {
 
+    /**
+     * Get a input from this {@link ButtonInput}
+     *
+     * @return A boolean representing the input
+     */
     public boolean get();
 
     /**
