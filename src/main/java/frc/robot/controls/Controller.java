@@ -10,24 +10,23 @@ import frc.robot.controls.Controller.AxisKey;
 public class Controller extends ControllerBase<ButtonKey, AxisKey> {
 
     public Controller() {
-        addDefault(new Layout("Game") {
-            {
-                var model = new LogitechModel(0);
 
-                assign(AxisKey.LeftFoward, model.leftStickY);
-                assign(AxisKey.RightFoward, model.rightStickY);
-            }
-        });
+        var gameLayout = new Layout("Game");
+        var logitech = new LogitechModel(0);
 
-        add(new Layout("Plane") {
-            {
-                var left = new FlightModel(1);
-                var right = new FlightModel(2);
+        gameLayout.assign(AxisKey.LeftFoward, logitech.leftStickY);
+        gameLayout.assign(AxisKey.RightFoward, logitech.rightStickY);
 
-                assign(AxisKey.LeftFoward, left.stickY);
-                assign(AxisKey.RightFoward, right.stickY);
-            }
-        });
+        addDefault(gameLayout);
+
+        var planeLayout = new Layout("Plane");
+        var leftModel = new FlightModel(1);
+        var rightModel = new FlightModel(2);
+
+        planeLayout.assign(AxisKey.LeftFoward, leftModel.stickY);
+        planeLayout.assign(AxisKey.RightFoward, rightModel.stickY);
+
+        add(planeLayout);
     }
 
     public static enum ButtonKey {
