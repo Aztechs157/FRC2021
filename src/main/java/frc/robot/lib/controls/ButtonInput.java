@@ -20,7 +20,7 @@ public interface ButtonInput {
      *
      * @return A new inverted input
      */
-    public default ButtonInput invert() {
+    public default ButtonInput inverted() {
         return () -> !get();
     }
 
