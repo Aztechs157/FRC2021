@@ -6,10 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import frc.robot.controls.Controller;
-import frc.robot.controls.Controller.ButtonKey;
-import frc.robot.controls.Controller.AxisKey;
+import frc.robot.drive.DriveSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -21,10 +19,15 @@ import frc.robot.controls.Controller.AxisKey;
 public class RobotContainer {
     private final Controller controller = new Controller();
 
+    private final DriveSubsystem driveSubsystem = new DriveSubsystem(controller);
+
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
+        var tab = Shuffleboard.getTab("Config");
+        tab.add("Layout Chooser", controller);
+
         // Configure the button bindings
         configureButtonBindings();
     }
@@ -33,12 +36,7 @@ public class RobotContainer {
      * Use this method to define your button->command mappings.
      */
     private void configureButtonBindings() {
-        controller.button(ButtonKey.PrintFoo).whenPressed(new PrintCommand("foo"));
-        controller.button(ButtonKey.PrintBar).whenPressed(new PrintCommand("bar"));
 
-        var tab = Shuffleboard.getTab("Config");
-        tab.add(controller);
-        tab.addNumber("Axis", () -> controller.getAxis(AxisKey.Foo));
     }
 
     /**

@@ -2,40 +2,39 @@ package frc.robot.controls;
 
 import frc.robot.lib.controls.ControllerBase;
 import frc.robot.lib.controls.LayoutBase;
+import frc.robot.controls.models.FlightModel;
 import frc.robot.controls.models.LogitechModel;
 import frc.robot.controls.Controller.ButtonKey;
-import static frc.robot.controls.Controller.ButtonKey.*;
 import frc.robot.controls.Controller.AxisKey;
-import static frc.robot.lib.controls.ButtonInput.*;
 
 public class Controller extends ControllerBase<ButtonKey, AxisKey> {
 
     public Controller() {
-        addDefault(new Layout("First") {
+        addDefault(new Layout("Game") {
             {
-                assign(PrintFoo, all(logitech.a, logitech.x));
-                assign(PrintBar, all(logitech.b, logitech.y));
-                assign(AxisKey.Foo, logitech.leftStickX);
+                var model = new LogitechModel(0);
+
+                assign(AxisKey.LeftFoward, model.leftStickY);
+                assign(AxisKey.RightFoward, model.rightStickY);
             }
         });
 
-        add(new Layout("Second") {
+        add(new Layout("Plane") {
             {
-                assign(PrintFoo, logitech.x);
-                assign(PrintBar, logitech.y);
-                assign(AxisKey.Foo, logitech.rightStickX);
+                var left = new FlightModel(1);
+                var right = new FlightModel(2);
+
+                assign(AxisKey.LeftFoward, left.stickY);
+                assign(AxisKey.RightFoward, right.stickY);
             }
         });
     }
 
-    private final LogitechModel logitech = new LogitechModel(0);
-
     public static enum ButtonKey {
-        PrintFoo, PrintBar, Toggle
     }
 
     public static enum AxisKey {
-        Foo
+        LeftFoward, RightFoward
     }
 
     private static class Layout extends LayoutBase<ButtonKey, AxisKey> {

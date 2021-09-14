@@ -15,4 +15,10 @@ package frc.robot;
  * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    public final class DriveConstants {
+        public static final int frontLeftMotorId = 2;
+        public static final int frontRightMotorId = 1;
+        public static final int backLeftMotorId = 4;
+        public static final int backRightMotorId = 3;
+    }
 }

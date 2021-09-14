@@ -22,15 +22,17 @@ public class ControllerBase<ButtonKey, AxisKey> implements Sendable {
         layouts.addOption(layout.name, layout);
     }
 
-    public Button button(final ButtonKey action) {
-        return new Button(() -> getButton(action));
+    public Button button(final ButtonKey buttonKey) {
+        return new Button(() -> getButton(buttonKey));
     }
 
-    public boolean getButton(final ButtonKey action) {
-        return layouts.getSelected().getButton(action).get();
+    public boolean getButton(final ButtonKey buttonKey) {
+        var layout = layouts.getSelected();
+        return layout == null ? false : layout.getButton(buttonKey).get();
     }
 
-    public double getAxis(final AxisKey axis) {
-        return layouts.getSelected().getAxis(axis).get();
+    public double getAxis(final AxisKey axisKey) {
+        var layout = layouts.getSelected();
+        return layout == null ? 0 : layout.getAxis(axisKey).get();
     }
 }
