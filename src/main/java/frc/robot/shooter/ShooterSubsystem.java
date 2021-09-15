@@ -14,6 +14,7 @@ public class ShooterSubsystem extends SubsystemBase {
     private CANSparkMax shooterLeft = new CANSparkMax(BallConstants.LEFT_SHOOTER_ID, MotorType.kBrushless);
     private CANSparkMax shooterRight = new CANSparkMax(BallConstants.RIGHT_SHOOTER_ID, MotorType.kBrushless);
     private double speed = 1;
+    public double targetRPM = 5230;
 
     /** Creates a new ShooterSubsystem. */
     public ShooterSubsystem() {
@@ -49,6 +50,22 @@ public class ShooterSubsystem extends SubsystemBase {
 
         double averageRPM = (leftRPM + rightRPM) / 2;
         return averageRPM;
+    }
+
+    /**
+     * raises the target rpm and prints rpm
+     */
+    public void raiseTargetSpeed() {
+        targetRPM = targetRPM + 10;
+        System.out.println("TargetRPM = " + targetRPM);
+    }
+
+    /**
+     * lowers the target rpm and prints rpm
+     */
+    public void lowerTargetSpeed() {
+        targetRPM = targetRPM - 10;
+        System.out.println("TargetRPM = " + targetRPM);
     }
 
     @Override

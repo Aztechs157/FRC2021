@@ -57,6 +57,8 @@ public class RobotContainer {
         new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
         new JoystickButton(operatorController, 5).toggleWhenPressed(new UptakeTest(uptakeSubsystem, shooterSubsystem));
         new JoystickButton(operatorController, 1).toggleWhenPressed(new AimerDebug(aimerSubsystem));
+        new JoystickButton(operatorController, 2).whenPressed(shooterSubsystem::raiseTargetSpeed);
+        new JoystickButton(operatorController, 3).whenPressed(shooterSubsystem::lowerTargetSpeed);
     }
 
     /**
