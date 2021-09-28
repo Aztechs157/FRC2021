@@ -74,6 +74,6 @@ public class ControllerBase<ButtonKey, AxisKey> implements Sendable {
             return 0;
         }
 
-        return layout == null ? 0 : layout.getAxis(axisKey).get();
+        return layout.getAxis(axisKey).get();
     }
 }
