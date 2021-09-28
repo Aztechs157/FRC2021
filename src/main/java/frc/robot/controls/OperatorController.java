@@ -12,7 +12,7 @@ public class OperatorController extends ControllerBase<ButtonKey, AxisKey> {
     public OperatorController() {
 
         var debugLayout = new Layout("Debug");
-        var logitech = new LogitechModel(0);
+        var logitech = new LogitechModel(1);
 
         debugLayout.assign(PickupBall, logitech.rightBumper);
         debugLayout.assign(TestUptake, logitech.leftBumper);
