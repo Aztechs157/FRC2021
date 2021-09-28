@@ -4,9 +4,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.hopper.HopperSubsystem;
 import frc.robot.shooter.ShooterSubsystem;
 import frc.robot.turret.TurretSubsystem;
@@ -19,6 +17,9 @@ import frc.robot.Intake.IntakeSubsystem;
 import frc.robot.Pneumatics.PneumaticsSubsystem;
 import frc.robot.aimer.AimerSubsystem;
 import frc.robot.aimer.AimerDebug;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import frc.robot.controls.Controller;
+import frc.robot.drive.DriveSubsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -28,7 +29,8 @@ import frc.robot.aimer.AimerDebug;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-    private Joystick operatorController = new Joystick(3);
+    private final Joystick operatorController = new Joystick(3);
+    private final Controller controller = new Controller();
 
     // The robot's subsystems and commands are defined here...
     private final PneumaticsSubsystem pneumaticsSubsystem = new PneumaticsSubsystem();
@@ -38,20 +40,21 @@ public class RobotContainer {
     private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
     private final TurretSubsystem turretSubsystem = new TurretSubsystem(operatorController);
     private final AimerSubsystem aimerSubsystem = new AimerSubsystem();
+    private final DriveSubsystem driveSubsystem = new DriveSubsystem(controller);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
+        var tab = Shuffleboard.getTab("Config");
+        tab.add("Layout Chooser", controller);
+
         // Configure the button bindings
         configureButtonBindings();
     }
 
     /**
-     * Use this method to define your button->command mappings. Buttons can be
-     * created by instantiating a {@link GenericHID} or one of its subclasses
-     * ({@link edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then
-     * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
+     * Use this method to define your button->command mappings.
      */
     private void configureButtonBindings() {
         new JoystickButton(operatorController, 6).toggleWhenPressed(new BallPickup(intakeSubsystem));
