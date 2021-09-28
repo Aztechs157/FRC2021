@@ -36,7 +36,6 @@ public class RobotContainer {
      * Use this method to define your button->command mappings.
      */
     private void configureButtonBindings() {
-
     }
 
     /**
