@@ -4,21 +4,20 @@
 
 package frc.robot.turret;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.controls.OperatorController;
 
 public class TurretDefault extends CommandBase {
     private TurretSubsystem turretSubsystem;
-    private Joystick joystick;
-    private int leftStick = 0;
+    private OperatorController operatorController;
     private double speedMultiplier = 0.2;
 
     /** Creates a new TurretDefault. */
-    public TurretDefault(TurretSubsystem turretSubsystem, Joystick joystick) {
+    public TurretDefault(TurretSubsystem turretSubsystem, OperatorController operatorController) {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(turretSubsystem);
         this.turretSubsystem = turretSubsystem;
-        this.joystick = joystick;
+        this.operatorController = operatorController;
     }
 
     // Called when the command is initially scheduled.
@@ -30,7 +29,7 @@ public class TurretDefault extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        turretSubsystem.TurretMotor(joystick.getRawAxis(leftStick) * speedMultiplier);
+        turretSubsystem.TurretMotor(operatorController.getAxis(OperatorController.AxisKey.Turret) * speedMultiplier);
     }
 
     // Called once the command ends or is interrupted.

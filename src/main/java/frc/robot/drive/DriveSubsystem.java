@@ -10,8 +10,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.controls.Controller;
-import frc.robot.controls.Controller.AxisKey;
+import frc.robot.controls.DriveController;
+import frc.robot.controls.DriveController.AxisKey;
 
 import static frc.robot.Constants.DriveConstants.*;
 
@@ -25,9 +25,9 @@ public class DriveSubsystem extends SubsystemBase {
     private final SpeedControllerGroup leftMotors = new SpeedControllerGroup(frontLeftMotor, backLeftMotor);
     private final SpeedControllerGroup rightMotors = new SpeedControllerGroup(frontRightMotor, backRightMotor);
 
-    private final Controller controller;
+    private final DriveController controller;
 
-    public DriveSubsystem(final Controller controller) {
+    public DriveSubsystem(final DriveController controller) {
         this.controller = controller;
         setDefaultCommand(new RunCommand(this::drive, this));
     }

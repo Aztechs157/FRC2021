@@ -9,19 +9,19 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.TurretConstants;
+import frc.robot.controls.OperatorController;
 
 public class TurretSubsystem extends SubsystemBase {
     private AnalogInput turretPos = new AnalogInput(TurretConstants.Potentiometer_ID);
     private CANSparkMax turret = new CANSparkMax(TurretConstants.TURRET_ID, MotorType.kBrushless);
 
     /** Creates a new TurretSubsystem. */
-    public TurretSubsystem(Joystick joystick) {
+    public TurretSubsystem(OperatorController operatorController) {
         Shuffleboard.getTab("Turret Stuff").addNumber("turretPos", this::GetPosition);
-        setDefaultCommand(new TurretDefault(this, joystick));
+        setDefaultCommand(new TurretDefault(this, operatorController));
     }
 
     /***
