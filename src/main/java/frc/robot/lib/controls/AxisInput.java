@@ -16,7 +16,7 @@ public interface AxisInput {
     public double get();
 
     /**
-     * Inverts the input by flipping the number's sign
+     * Inverts the input by negating the number's sign
      *
      * @return A new inverted input
      */

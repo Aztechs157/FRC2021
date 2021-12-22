@@ -31,8 +31,8 @@ public class LayoutBase<ButtonKey, AxisKey> {
      * For this Layout, assign a ButtonKey to a ButtonInput. Calling this method
      * multiple times with the same ButtonKey will override the previous assignment.
      *
-     * @param buttonKe The key to assign with
-     * @param input    The input being assigned
+     * @param buttonKey The key to assign with
+     * @param input     The input being assigned
      */
     public void assign(final ButtonKey buttonKey, final ButtonInput input) {
         buttons.put(buttonKey, input);
